@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cherished💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+      color: pink;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      text-align: center; margin-bottom: 15px;
+    }
+
+    h1 { font-size: 2em; }
+
+    img {
+      width: 250px; max-width: 90%;
+      margin: 20px 0; border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
+    }
+
+    .btn {
+      background-color: pink; color: black;
+      padding: 12px 25px; font-size: 16px;
+      border: none; border-radius: 8px;
+      margin-top: 20px; cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: rgb(170, 31, 101); color: #fff;
+    }
+
+    .voice-note {
+      display: none;
+      animation: fadeInScale 1s ease forwards;
+      margin: 30px 0;
+    }
+
+    audio {
+      margin-top: 10px;
+      width: 90%; max-width: 400px;
+    }
+
+    a {
+      color: lightblue; text-decoration: none;
+      display: block; margin-top: 5px;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .quote {
+      position: fixed; bottom: 15px;
+      font-style: italic; color: lightpink;
+      font-size: 14px; opacity: 0.7; text-align: center; width: 100%;
+    }
+
+    #videoContainer video {
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+    }
+
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInText {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      width: 30px;
+      height: 30px;
+      background: url('https://pngimg.com/uploads/heart/heart_PNG51337.png') no-repeat center/contain;
+      animation: floatHearts 8s linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5em; }
+      .btn { font-size: 14px; padding: 10px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" src="audio/background.mp3" autoplay loop hidden></audio>
+
+  <!-- Main Section -->
+  <h1>Do you have a surprise....🎉🎁!</h1>
+  <h2>Chosen by the heart, cherished for a lifetime ❤️</h2>
+  <img src="Artificial intelligence.jpg" alt="Surprise Image">
+
+  <h3 style="color: cornsilk;">
+    I don’t know why I love you this much... 💫<br>
+    But it feels like magic I never want to lose 💖<br>
+    Click below to unlock it all...
+  </h3>
+  <hr style="height:2px; background:pink; border:none; width:100%; margin:40px auto;">
+
+  <p>I still don’t know why I like you this much… ?? But one thing I’m sure of this is a pure bond, something so rare and real ??. There’s a love I feel for you that keeps growing day by day… and honestly, I don’t know how or why, but it just does ??. Sometimes, when I think about how lucky that someone like to have this much of love and affection... even I feel a little jealous, because to have me?? You may not have given me life, but your love gave me a reason to feel safe, seen, and deeply cared for??. You stepped into my life like a calm breeze, and suddenly, I had someone who felt like home ?. My love is not something everyone gets… and the fact that it’s yours makes you one of the lucky few??</p>
+
+  <!-- Start Button -->
+  <button class="btn" id="startBtn" onclick="startSurprise()">Click here Mee</button>
+
+  <!-- Voice Notes Section -->
+  <div id="voiceNotesContainer">
+    <div class="voice-note" id="note1">
+      <p>🎧 Voice Note 1: From Person 1</p>
+      <audio controls src="audio/person1.mp3"></audio>
+      <a href="audio/person1.mp3" download>Download</a>
+    </div>
+
+    <div class="voice-note" id="note2">
+      <p>🎧 Voice Note 2: From Person 2</p>
+      <audio controls src="audio/person2.mp3"></audio>
+      <a href="audio/person2.mp3" download>Download</a>
+    </div>
+
+    <div class="voice-note" id="note3">
+      <p>🎧 Voice Note 3: From Person 3</p>
+      <audio controls src="audio/person3.mp3"></audio>
+      <a href="audio/person3.mp3" download>Download</a>
+    </div>
+  </div>
+
+  <!-- Control Buttons -->
+  <button class="btn" id="nextBtn" onclick="showNextNote()" style="display:none;">Next ➡️</button>
+  <button class="btn" id="replayBtn" onclick="resetSurprise()" style="display:none;">🔁 Replay Surprise</button>
+  <button class="btn" id="anotherBtn" onclick="playVideo()" style="display:none;">🎥 Another One Surprise 🎉</button>
+
+  <!-- Surprise Video -->
+  <div id="videoContainer" style="display:none; text-align: center;">
+    <video id="surpriseVideo" width="80%" controls>
+      <source src="C:\Users\ELCOT\Desktop\html fold\vlc-record-2022-10-19-19h53m19s-Idiot_2022_360p.mp4-.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Floating Quote -->
+  <div class="quote" style="color: white;">"To be loved by me this deeply… that in itself is a kind of luck and it’s all yours???💕"</div>
+
+  <!-- Script -->
+  <script>
+    let currentNote = 0;
+    const notes = ['note1', 'note2', 'note3'];
+
+    function startSurprise() {
+      document.getElementById('note1').style.display = 'block';
+      document.getElementById('nextBtn').style.display = 'inline-block';
+      document.getElementById('startBtn').style.display = 'none';
+      currentNote = 1;
+    }
+
+    function showNextNote() {
+      if (currentNote < notes.length) {
+        const nextId = notes[currentNote];
+        document.getElementById(nextId).style.display = 'block';
+        currentNote++;
+        if (currentNote === notes.length) {
+          document.getElementById('nextBtn').style.display = 'none';
+          document.getElementById('replayBtn').style.display = 'inline-block';
+          document.getElementById('anotherBtn').style.display = 'inline-block';
+        }
+      }
+    }
+
+    function resetSurprise() {
+      notes.forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      currentNote = 0;
+      document.getElementById('startBtn').style.display = 'inline-block';
+      document.getElementById('nextBtn').style.display = 'none';
+      document.getElementById('replayBtn').style.display = 'none';
+      document.getElementById('anotherBtn').style.display = 'none';
+      document.getElementById('videoContainer').style.display = 'none';
+    }
+
+    function playVideo() {
+      document.getElementById('voiceNotesContainer').style.display = 'none';
+      document.getElementById('anotherBtn').style.display = 'none';
+      document.getElementById('replayBtn').style.display = 'none';
+
+      const videoContainer = document.getElementById('videoContainer');
+      const video = document.getElementById('surpriseVideo');
+      videoContainer.style.display = 'block';
+
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+
+      video.play();
+
+      video.onended = function() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+
+        document.body.innerHTML = '';
+        document.body.style.background = '#000';
+        document.body.style.overflow = 'hidden';
+        document.body.style.display = 'flex';
+        document.body.style.justifyContent = 'center';
+        document.body.style.alignItems = 'center';
+        document.body.style.flexDirection = 'column';
+        document.body.style.height = '100vh';
+        document.body.style.width = '100vw';
+
+        const finalDiv = document.createElement('div');
+        finalDiv.id = 'finalMessage';
+        finalDiv.style.color = '#fff';
+        finalDiv.style.fontSize = '2em';
+        finalDiv.style.textAlign = 'center';
+        finalDiv.style.maxWidth = '90%';
+        finalDiv.style.opacity = '0';
+        finalDiv.style.zIndex = '2';
+        finalDiv.style.animation = 'fadeInText 2s ease forwards';
+        finalDiv.innerHTML = `
+          I think this will definitely make you happy at all.<br>
+          Once again Happy Birthday Mee 🎉🎂💕
+        `;
+        document.body.appendChild(finalDiv);
+        createHearts();
+      };
+    }
+
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
+
+
